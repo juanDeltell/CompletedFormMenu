@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title></title>
+  <link rel="stylesheet" href="css/base.css" type="text/css" />  
+  <script type="text/javascript" src="src/engine.js"></script>
+</head>
+<body onload="onLoad()">
+<br><br>
+	<form action="gestionForm.php" method="post" id="platosForm" onsubmit="contacto()">
+	<div id="titulo">Restaurant Menu</div>
+
+		<div id='datosPersonales'>
+			<table width="100%" border="0" cellspacing="0" cellpadding="10">
+				<tr>
+					<th colspan="3">
+						Datos personales
+					</th>
+				</tr>
+				
+				<tr>
+					<th>
+						Nombre:
+					</th> 
+					<td>
+						<input type="text" title="Introduce solo letras" placeholder="Nombre" name="nombre" size="35" maxlength="50" pattern="[a-zA-Z]*" required  onmouseover="muestraNombre()" onmouseout="ocultaNombre()">
+					</td>
+					<td>
+						<span id="hoverNombre" style="visibility:hidden">introduce tu nombre, solo letras</span>
+					</td>
+				</tr>
+				
+				<tr>
+					<th>
+						Apellidos:
+					</th>
+					<td>
+						<input type="text"  title="Introduce solo letras" placeholder="Apellidos" name="apellidos" size="35" maxlength="100" pattern="[a-zA-Z ]*" required onmouseover="muestraApellido()" onmouseout="ocultaApellido()">
+					</td>
+					<td>
+						<span id="hoverApellido" style="visibility:hidden">introduce tu apellido, solo letras</span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						NIF:
+					</th>
+					<td>
+						<input type="text" title="Introduce un NIF valido" placeholder="NIF" name="NIF" size="35" maxlength="50" pattern="[0-9]{8}[a-zA-Z]" required  onmouseover="muestraNIF()" onmouseout="ocultaNIF()">
+					</td>
+					<td>
+						<span id="hoverNIF" style="visibility:hidden">introduce un NIF valido (8 números una letra)</span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						Dirección:
+					</th>
+					<td>
+						<input type="text" title= "introduce tu dirección" placeholder="Dirección" name="direccion" size="50" maxlength="50" required onmouseover="muestraDireccion()" onmouseout="ocultaDireccion()">
+					</td>
+					<td>
+						<span id="hoverDireccion" style="visibility:hidden">introduce tu dirección completa</span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						Código postal:
+					</th>
+					<td>
+						<input type="text"  title="Introduce solo 5 dígitos" placeholder= "Código postal" name="codigoPostal" pattern="[0-9]{5}" onmouseover="muestraCodigoPostal()" required onmouseout="ocultaCodigoPostal()">
+					</td>
+					<td>
+						<span id="hoverCodigoPostal" style="visibility:hidden">introduce tu código postal, solo 5 números</span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						Correo electrónico:
+					</th>
+					<td>
+						<input type="email" id="correo" title= "formato correo: alguien@correo.com" placeholder="e.j. example@correo.com" name="correo" size="40" maxlength="100" required onmouseover="muestraCorreo()" onmouseout="ocultaCorreo()">
+					</td>
+					<td>
+						<span id="hoverCorreo" style="visibility:hidden">introduce tu correo electrónico</span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						Teléfono:
+					</th>
+					<td>
+						<input type="text"  id="telefono" title="Introduce solo 10 dígitos" name="telefono" placeholder="Teléfono" size="15" pattern="[0-9]{10}" required onmouseover="muestraTelefono()" onmouseout="ocultaTelefono()">
+					</td>
+					<td>
+						<span id="hoverTelefono" style="visibility:hidden">introduce tu teléfono, solo 10 números</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div id='datosPedido'>	
+			<table width="100%" border="0" cellspacing="0" cellpadding="10">
+				<tr>
+					<th colspan="5">
+						Datos del pedido
+					</th>
+				</tr>
+				<tr>
+					<th onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()">Primer Plato:
+					</th>
+					<td colspan="4">
+						<span id="hoverPrimerPlato" style="visibility:hidden">Selecciona solo un primer plato</span>
+					</td>
+				</tr>
+				<tr>
+					
+					
+					<td   onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()">
+						<input type="radio" name="primerPlato" value="10"  onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()"required> Gazpacho 10 €
+					</td   onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()">
+				
+					<td   onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()">	
+						<input type="radio" name="primerPlato" value="12" onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()"required> Ensalada Mixta 12 €
+					</td>
+				
+					<td   onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()">
+						<input type="radio" name="primerPlato" value="14" onmouseover="muestraPrimerPlato()" onmouseout="ocultaPrimerPlato()"required> Lentejas 14 €
+					</td>
+				</tr>
+				<tr>
+					<th onmouseover="muestraSegundoPlato()" onmouseout="ocultaSegundoPlato()">Segundo Plato:
+					</th>
+					<td colspan="4">
+						<span id="hoverSegundoPlato" style="visibility:hidden">Selecciona solo un segundo plato</span>
+					</td>
+				</tr>
+				<tr>
+				
+					<td   onmouseover="muestraSegundoPlato()" onmouseout="ocultaSegundoPlato()">
+						<input type="radio" name="segundoPlato" value="17" required> Filete de Ternera 17 €
+					</td>
+					
+					<td   onmouseover="muestraSegundoPlato()" onmouseout="ocultaSegundoPlato()">
+						<input type="radio" name="segundoPlato" value="10" required> Pollo asado 10 €
+					</td>
+				
+					<td   onmouseover="muestraSegundoPlato()" onmouseout="ocultaSegundoPlato()">
+						<input type="radio" name="segundoPlato" value="12" required> Huevos con chistorra 12 €
+					</td>
+				
+					<td   onmouseover="muestraSegundoPlato()" onmouseout="ocultaSegundoPlato()">
+						<input type="radio" name="segundoPlato" value="21" required> Merluza a la plancha 21 €
+					</td>
+				</tr>
+				<tr>
+					<th onmouseover="muestraIngredientesExtra()" onmouseout="ocultaIngredientesExtra()">ingredientes extra (segundo plato):
+					</th>
+					<td colspan="4">
+						<span id="hoverIngredientesExtra" style="visibility:hidden">Selecciona un máximo de tres ingredientes</span>
+					</td>
+				</tr>
+				<tr>
+				
+					<td onmouseover="muestraIngredientesExtra()" onmouseout="ocultaIngredientesExtra()">
+						<input type="checkbox" name="ingredienteExtra[]" value="2">Queso 2 €
+					</td>
+					
+					<td onmouseover="muestraIngredientesExtra()" onmouseout="ocultaIngredientesExtra()">
+						<input type="checkbox" name="ingredienteExtra[]" value="2.5">Bacon 2.5 €
+					</td>
+					
+					<td onmouseover="muestraIngredientesExtra()" onmouseout="ocultaIngredientesExtra()">
+						<input type="checkbox" name="ingredienteExtra[]" value="3">Huevo 3 €
+					</td>
+				
+					<td onmouseover="muestraIngredientesExtra()" onmouseout="ocultaIngredientesExtra()">
+						<input type="checkbox" name="ingredienteExtra[]" value="2">Jalapeños 2 €
+					</td>
+					
+					<td onmouseover="muestraIngredientesExtra()" onmouseout="ocultaIngredientesExtra()">
+						<input type="checkbox" name="ingredienteExtra[]" value="2.5" >Patatas fritas 2.5 €
+					</td>
+				</tr>
+				<tr>
+					<th onmouseover="muestraBebida()" onmouseout="ocultaBebida()">Bebida:
+					</th>
+					<td colspan="4">
+						<span id="hoverBebida" style="visibility:hidden">Selecciona una bebida</span>
+					</td>
+				</tr>
+				<tr>
+				
+					<td onmouseover="muestraBebida()" onmouseout="ocultaBebida()">
+						<input type="radio" name="bebida" value="4.5" required> Vino 4.5 €
+					</td>
+				
+					<td onmouseover="muestraBebida()" onmouseout="ocultaBebida()">
+						<input type="radio" name="bebida" value="3" required> Cerveza 3 €
+					</td>
+				
+					<td onmouseover="muestraBebida()" onmouseout="ocultaBebida()">
+						<input type="radio" name="bebida" value="2.5" required> Refresco 2.5 €
+					</td>
+			
+					<td onmouseover="muestraBebida()" onmouseout="ocultaBebida()">
+						<input type="radio" name="bebida" value="1.5" required> Agua 1.5 €
+					</td>
+				
+					<td onmouseover="muestraBebida()" onmouseout="ocultaBebida()">
+						<input type="radio" name="bebida" value="2.5" required> Albondigas 2.5 €
+					</td>
+					
+				</tr>
+			</table>
+			<br>
+			<br>
+			<br>
+		</div>
+		<div id='datosPago'>	
+			<table width="100%" border="0" cellspacing="0" cellpadding="10">
+				<tr>
+					<th colspan="3">
+						Datos de cobro
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<p>¿tiene código de descuento? </p>
+					</td>
+					<td>	
+						<input type="radio" id="cuponDescuentoNo" name="cuponDescuento" value="no" checked onclick="ocultaCuponDescuento()"> No
+					</td>
+						<td><input type="radio" id="cuponDescuentoSi" name="cuponDescuento" value="si" onclick="muestraCuponDescuento()"> Si
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="codigoDescuentoEncabezado" style=" display:none">Por favor, introduce el Código de descuento:</p>
+					</td>
+					<td>
+						<input id="codigoDescuento" title="formato: 2letras y 3dígitos" type="text" name="codigoDescuento" value="" style="display:none" pattern="[A-Za-z]{2}[0-9]{3}" onmouseover="muestraCodigoDescuentoAyuda()" onmouseout="ocultaCodigoDescuentoAyuda()">
+					</td>
+					<td>
+						<span id="hoverCodigoDescuentoAyuda" style="visibility:hidden">formato: 2 letras y 3 dígitos (5 en total)</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="descuento25" name="descuento25"  > &nbsp;&nbsp;!Cupón de 25% de descuento!</p>
+					</td>
+					<td colspan="2" >
+							<input type="text" id="cantidadTotalConDescuento" name="cantidadTotalConDescuento" value="0" readonly><div  id="eurosDescuento" name="eurosDescuento">Euros de descuento!</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Cantidad total: </span>
+					</td>
+					<td colspan="2">
+						<input type="text" id="cantidadTotal" name="cantidadTotal" value="0" readonly>&nbsp;&nbsp;Euros
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+		<table width="50%" border="0" align="center" cellpadding="10" cellspacing="0">
+				<tr>
+				<td><div align="center">
+				<input id="enviar" type="submit" class="enviar" value="Enviar formulario">
+				</div></td>
+				<td><div align="center">
+				<input type="Reset" class="borrar" value="Borrar formulario">
+				</div></td>
+				</tr>
+			</table>
+	</form>
+	
+	
+  
+</body>
+</html>
+
